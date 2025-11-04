@@ -6,9 +6,13 @@ setup(
     ext_modules=[
         cpp_extension.CppExtension(
             name='cpp_transforms',
+            # sources=[
+            #     'bindings.cpp',
+            #     'transforms.cpp'
+            # ],
             sources=[
-                'bindings.cpp',
-                'transforms.cpp'
+                'cpp_transforms/bindings.cpp',
+                'cpp_transforms/transforms.cpp'
             ],
             include_dirs=['.'],
         ),
