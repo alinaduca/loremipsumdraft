@@ -7,6 +7,9 @@ namespace py = pybind11;
 PYBIND11_MODULE(cpp_transforms, m) {
     m.doc() = "C++ implementations of common torchvision v2 transforms";
 
+    py::class_<Transform, std::shared_ptr<Transform>>(m, "Transform")
+        .def("apply", &Transform::apply);
+
     m.def("to_dtype", [](const std::string& dtype_str, bool scale){
         torch::Dtype dt = torch::kFloat32;
         if (dtype_str == "float32") dt = torch::kFloat32;
