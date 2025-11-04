@@ -1,17 +1,17 @@
-from setuptools import setup
-from torch.utils.cpp_extension import CppExtension, BuildExtension
+from setuptools import setup, Extension
+from torch.utils import cpp_extension
 
 setup(
     name='cpp_transforms',
     ext_modules=[
-        CppExtension(
+        cpp_extension.CppExtension(
             name='cpp_transforms',
             sources=[
-                'cpp_transforms/bindings.cpp',
-                'cpp_transforms/transforms.cpp',
+                'bindings.cpp',
+                'transforms.cpp'
             ],
-            include_dirs=['cpp_transforms'],
+            include_dirs=['.'],
         ),
     ],
-    cmdclass={'build_ext': BuildExtension}
+    cmdclass={'build_ext': cpp_extension.BuildExtension}
 )
